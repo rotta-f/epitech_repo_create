@@ -27,7 +27,9 @@ if (not os.system("blih -u "+username+" -t \"" + token + "\" repository create "
         print("\nAdding user: \033[94m" + sys.argv[i] + "\033[0m")
         os.system("blih -u "+username+" -t \"" + token + "\" repository setacl " + rep_name + " "  + sys.argv[i]  + " rw ")
 
-print("\nUsers:\033[94m")
-os.system("blih -u "+username+" -t \"" + token + "\" repository getacl " + rep_name)
-print("\033[0m")
+    print("\nUsers:\033[94m")
+    os.system("blih -u "+username+" -t \"" + token + "\" repository getacl " + rep_name)
+    print("\033[0m")
 
+    if (input("Do you want to clone your repository ? (Y/N)\n").upper() == "Y"):
+        os.system("git clone " + username + "@git.epitech.eu:/" + username + "/" + rep_name)
